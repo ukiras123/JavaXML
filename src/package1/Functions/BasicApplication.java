@@ -1,23 +1,16 @@
 package package1.Functions;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionEvent;
-
-import javax.swing.Action;
-
-import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import java.awt.TextArea;
-import javax.swing.JTextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class BasicApplication {
 

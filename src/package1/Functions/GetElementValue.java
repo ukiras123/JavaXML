@@ -1,7 +1,6 @@
 package package1.Functions;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,7 +20,7 @@ public class GetElementValue {
 		 String xmlFilePath = xmlPath;
 		 String tagName1 = tagName;
 		 String elementName1 = elementName;
-		 String output=null;		 
+		 String output = "\n";		 
 		 try {
 		
 				File xmlFile = new File(xmlFilePath);
@@ -46,10 +45,13 @@ public class GetElementValue {
 
 					if (node.getNodeType() == Node.ELEMENT_NODE) 
 					{
-						Element eElement = (Element) node;									
-						String out = eElement.getElementsByTagName(elementName1).item(0).getTextContent();
+						Element eElement = (Element) node;		
+						for (int i = 0; i < eElement.getElementsByTagName(elementName1).getLength(); i++)
+						{
+						String out = eElement.getElementsByTagName(elementName1).item(i).getTextContent();
+						output = output + out + "\n";
+						}
 						
-						output = output + "\n" + out;
 					}
 				}
 			} catch (Exception e) {
