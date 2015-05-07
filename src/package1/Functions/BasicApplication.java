@@ -32,6 +32,7 @@ public class BasicApplication {
 	GetElementValue getValue = new GetElementValue();
 	private JButton btnSubmit2;
 	TextArea textOutput;
+	private JTextField textElement1;
 
 	/**
 	 * Launch the application.
@@ -84,7 +85,7 @@ public class BasicApplication {
 				
 			}
 		});
-		btnSubmit1.setBounds(126, 115, 147, 23);
+		btnSubmit1.setBounds(126, 148, 147, 23);
 		frame.getContentPane().add(btnSubmit1);
 		
 		textURL = new JTextField();
@@ -133,12 +134,46 @@ public class BasicApplication {
 			}
 			
 		});
-		btnSubmit2.setBounds(416, 115, 129, 23);
+		btnSubmit2.setBounds(416, 148, 129, 23);
 		frame.getContentPane().add(btnSubmit2);
 		
 		textOutput = new TextArea();
-		textOutput.setBounds(126, 166, 419, 165);
+		textOutput.setBounds(126, 203, 419, 165);
 		frame.getContentPane().add(textOutput);
+		
+		JButton btnGetElement = new JButton("Element Value");
+		btnGetElement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {						//************************** Get the element value
+				String filePath;
+				String tagName;
+				String element;
+				String outcome;
+				try{				
+				filePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
+				tagName = textElement.getText();
+				element = textElement1.getText();
+				outcome = getValue.elementValue(filePath, tagName, element);				
+				textOutput.setText(outcome); 				
+				}
+				catch(Exception e1){
+				e1.printStackTrace();
+				}			
+				
+				
+				
+			}
+		});
+		btnGetElement.setBounds(283, 148, 123, 23);
+		frame.getContentPane().add(btnGetElement);
+		
+		textElement1 = new JTextField();
+		textElement1.setColumns(10);
+		textElement1.setBounds(126, 112, 419, 28);
+		frame.getContentPane().add(textElement1);
+		
+		JLabel lblElementYouWant = new JLabel("Element you want");
+		lblElementYouWant.setBounds(10, 116, 106, 21);
+		frame.getContentPane().add(lblElementYouWant);
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {

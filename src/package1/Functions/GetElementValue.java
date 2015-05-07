@@ -13,41 +13,50 @@ import org.w3c.dom.NodeList;
 
 public class GetElementValue {
 
-	 public static void main(String[] args) throws IOException {
-		 
-		String xmlFilePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\catalogResponse.xml";
-
-		try {
-	
-			File xmlFile = new File(xmlFilePath);
-
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-
-			Document doc = documentBuilder.parse(xmlFile);
-
-			doc.getDocumentElement().normalize();
-
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-
-			NodeList nodeList = doc.getElementsByTagName("catalog");
-
-			for (int itr = 0; itr < nodeList.getLength(); itr++) {
-
-				Node node = nodeList.item(itr);
-
-				System.out.println("\nNode Name :" + node.getNodeName());
-
-				if (node.getNodeType() == Node.ELEMENT_NODE) 
-				{
-					Element eElement = (Element) node;
-					NodeList nodeList2 = doc.getElementsByTagName("priceGroups");									
-					System.out.println(eElement.getElementsByTagName("priceGroups").item(0).getTextContent());
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	 public static void main(String[] args) {		 
+		
 	}
+	 
+	 public String elementValue (String xmlPath, String tagName, String elementName){
+		 String xmlFilePath = xmlPath;
+		 String tagName1 = tagName;
+		 String elementName1 = elementName;
+		 String output=null;		 
+		 try {
+		
+				File xmlFile = new File(xmlFilePath);
+
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+				Document doc = documentBuilder.parse(xmlFile);
+
+				doc.getDocumentElement().normalize();
+
+				//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+				NodeList nodeList = doc.getElementsByTagName(tagName1);
+
+				for (int itr = 0; itr < nodeList.getLength(); itr++) {
+
+					Node node = nodeList.item(itr);
+
+					//System.out.println("\nNode Name :" + node.getNodeName());
+
+					if (node.getNodeType() == Node.ELEMENT_NODE) 
+					{
+						Element eElement = (Element) node;									
+						String out = eElement.getElementsByTagName(elementName1).item(0).getTextContent();
+						
+						output = output + "\n" + out;
+					}
+				}
+			} catch (Exception e) {
+				return e.getMessage();
+			}			
+			return output;
+		 
+		 
+	 }
 }
