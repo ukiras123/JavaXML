@@ -20,9 +20,11 @@ public class BasicApplication {
 	private JTextField textElement;
 	private JLabel lblUrl;
 	private JLabel lblElement;
+	
 	CountXMLElements count = new CountXMLElements();
 	XMLValidation xml = new XMLValidation();
 	GetElementValue getValue = new GetElementValue();
+	
 	private JButton btnSubmit2;
 	TextArea textOutput;
 	private JTextField textElement1;
@@ -141,15 +143,44 @@ public class BasicApplication {
 				String tagName;
 				String element;
 				String outcome;
-				try{				
-				filePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
+				try{
+				filePath = textURL.getText();				
 				tagName = textElement.getText();
 				element = textElement1.getText();
-				outcome = getValue.elementValue(filePath, tagName, element);				
-				textOutput.setText(outcome); 				
+				String shortString = null;
+				if (!filePath.equals(""))
+				{
+				shortString = filePath.substring(0, 4);				
+				}
+				if (filePath.equals("") && tagName.equals("") && element.equals(""))
+				{
+					textOutput.setText("Keep \n Calm \n And \n Insert \n Some \n Data\n ");
+				}
+				else if(shortString.equals("http") && tagName != null && element != null)
+				{
+				getValue.fileCreation(filePath);
+				String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
+				outcome = getValue.elementValue(filePath1, tagName, element);
+				textOutput.setText(outcome); 
+				}
+				else if (shortString.equals("http") && tagName == null && element == null)
+				{
+				getValue.fileCreation(filePath);
+				outcome = "Response file has been created. \n C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
+				textOutput.setText(outcome);
+				}
+				else if (!shortString.equals("http") && tagName != null && element != null)
+				{
+					filePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
+					outcome = getValue.elementValue(filePath, tagName, element);				
+					textOutput.setText(outcome); 
+					
+				}				
+								
 				}
 				catch(Exception e1){
-				e1.printStackTrace();
+				outcome = e1.getMessage();
+				textOutput.setText(outcome);
 				}			
 				
 				
