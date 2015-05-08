@@ -72,7 +72,7 @@ public class BasicApplication {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Keep Calm And Do Anything With XML");
 		frame.setBounds(100, 100, 652, 417);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -244,8 +244,8 @@ public class BasicApplication {
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(NAME, "This is for testing");
+			putValue(SHORT_DESCRIPTION, "This is description");
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
