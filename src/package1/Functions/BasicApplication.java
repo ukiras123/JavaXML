@@ -25,6 +25,7 @@ public class BasicApplication {
 	XMLValidation xml = new XMLValidation();
 	GetElementValue getValue = new GetElementValue();
 	
+	
 	private JButton btnSubmit2;
 	TextArea textOutput;
 	private JTextField textElement1;
@@ -45,6 +46,21 @@ public class BasicApplication {
 		});
 	}
 
+	public Boolean testIfNull(){                                             ////////////////test if null
+		String filePath;
+		String tagName;
+		String element;
+		filePath = textURL.getText();				
+		tagName = textElement.getText();
+		element = textElement1.getText();
+	if (filePath.equals("") && tagName.equals("") && element.equals(""))
+	{
+		return true;
+	}
+	else{
+	return false;
+	}
+	}
 	/**
 	 * Create the application.
 	 */
@@ -63,16 +79,26 @@ public class BasicApplication {
 		
 		JButton btnSubmit1 = new JButton("Element Count");
 		btnSubmit1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {        //******************** Element Count
+			public void actionPerformed(ActionEvent arg0) {     
+				BasicApplication nullTest = new BasicApplication();//******************** Element Count
 				String input1;
 				String input2;
 				String outcome;
 				//xml.XMLValidationtest(Schema,File);
 				try{
+					
 				input1 = textURL.getText();
 				input2 = textElement.getText();
+				Boolean x = nullTest.testIfNull();
+				if (x == true)
+				{
+					textOutput.setText("Keep \n Calm \n And \n Insert \n Some \n Data\n ");
+				}
+				else
+				{
 				outcome = count.XMLCount(input1 ,input2);
 				textOutput.setText(outcome); 
+				}
 				}
 				catch(Exception e){
 				e.printStackTrace();
@@ -113,15 +139,25 @@ public class BasicApplication {
 		
 		btnSubmit2 = new JButton("XSD Validation");
 		btnSubmit2.addActionListener(new ActionListener() {                //******************* Schema Validation
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {	
+				BasicApplication nullTest = new BasicApplication();
 				String input1;
 				String input2;
 				String outcome;
 				try{				
 				input1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
 				input2 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textElement.getText() + ".xsd";
+				nullTest.testIfNull();
+				Boolean x = nullTest.testIfNull();
+				if (x == true)
+				{
+					textOutput.setText("Keep \n Calm \n And \n Insert \n Some \n Data\n ");
+				}
+				else
+				{
 				outcome = xml.XMLValidationtest(input1,input2);				
 				textOutput.setText(outcome); 				
+				}
 				}
 				catch(Exception e1){
 				e1.printStackTrace();
@@ -136,9 +172,11 @@ public class BasicApplication {
 		textOutput.setBounds(126, 203, 419, 165);
 		frame.getContentPane().add(textOutput);
 		
+		
 		JButton btnGetElement = new JButton("Element Value");
 		btnGetElement.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {						//************************** Get the element value
+			public void actionPerformed(ActionEvent arg0) {		
+				BasicApplication nullTest = new BasicApplication();//************************** Get the element value
 				String filePath;
 				String tagName;
 				String element;
@@ -148,14 +186,18 @@ public class BasicApplication {
 				tagName = textElement.getText();
 				element = textElement1.getText();
 				String shortString = null;
-				if (!filePath.equals(""))
-				{
-				shortString = filePath.substring(0, 4);				
-				}
-				if (filePath.equals("") && tagName.equals("") && element.equals(""))
+				nullTest.testIfNull();
+				Boolean x = nullTest.testIfNull();
+				if (x == true)
 				{
 					textOutput.setText("Keep \n Calm \n And \n Insert \n Some \n Data\n ");
 				}
+				else
+				{
+				if (!filePath.equals(""))
+				{
+				shortString = filePath.substring(0, 4);				
+				}				
 				else if(shortString.equals("http") && tagName != null && element != null)
 				{
 				getValue.fileCreation(filePath);
@@ -175,7 +217,8 @@ public class BasicApplication {
 					outcome = getValue.elementValue(filePath, tagName, element);				
 					textOutput.setText(outcome); 
 					
-				}				
+				}	
+				}
 								
 				}
 				catch(Exception e1){
