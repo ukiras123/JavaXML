@@ -69,10 +69,34 @@ public class BasicApplication {
 				String outcome;
 				//xml.XMLValidationtest(Schema,File);
 				try{
+					String filePath = textURL.getText();
+					String tagName = textElement.getText();
+					String element = textElement1.getText();
+					String shortString;
+					if(filePath.equals("") && tagName.equals("") && element.equals(""))					
+					{
+						textOutput.setText("Keep \n Calm \n And \n Insert \n Some \n Data\n ");
+					}
+					else if (!filePath.equals(""))
+					{
+					shortString = filePath.substring(0, 4);	
+					if(shortString.equals("http"))
+					{
+						getValue.fileCreation(filePath);
+						String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
+						filePath = filePath1;
+						input2 = textElement.getText();						
+						outcome = count.XMLCount(filePath ,input2)	;			
+						textOutput.setText(outcome); 
+					}	
+					else
+					{
 				input1 = textURL.getText();
 				input2 = textElement.getText();
 				outcome = count.XMLCount(input1 ,input2);
 				textOutput.setText(outcome); 
+				}
+				}
 				}
 				catch(Exception e){
 				e.printStackTrace();
@@ -114,15 +138,37 @@ public class BasicApplication {
 		btnSubmit2 = new JButton("XSD Validation");
 		btnSubmit2.addActionListener(new ActionListener() {                //******************* Schema Validation
 			public void actionPerformed(ActionEvent e) {				
-				String input1;
-				String input2;
+				String filePath = textURL.getText();
+				String schema;
 				String outcome;
-				try{				
-				input1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
-				input2 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textElement.getText() + ".xsd";
-				outcome = xml.XMLValidationtest(input1,input2);				
+				try{			
+					String tagName = textElement.getText();
+					String element = textElement1.getText();
+					String shortString;
+					if(filePath.equals("") && tagName.equals("") && element.equals(""))					
+					{
+						textOutput.setText("Keep \n Calm \n And \n Insert \n Some \n Data\n ");
+					}
+					else if (!filePath.equals(""))
+					{
+					shortString = filePath.substring(0, 4);	
+					if(shortString.equals("http"))
+					{
+						getValue.fileCreation(filePath);
+						String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
+						filePath = filePath1;
+						schema = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textElement.getText() + ".xsd";
+						outcome = xml.XMLValidationtest(filePath,schema);				
+						textOutput.setText(outcome); 
+					}					
+					else
+					{
+				filePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
+				schema = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textElement.getText() + ".xsd";
+				outcome = xml.XMLValidationtest(filePath,schema);				
 				textOutput.setText(outcome); 				
 				}
+					}}
 				catch(Exception e1){
 				e1.printStackTrace();
 				}				
