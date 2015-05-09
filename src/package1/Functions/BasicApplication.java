@@ -20,10 +20,7 @@ public class BasicApplication {
 	private JTextField textElement;
 	private JLabel lblUrl;
 	private JLabel lblElement;
-	
-	CountXMLElements count = new CountXMLElements();
-	XMLValidation xml = new XMLValidation();
-	GetElementValue getValue = new GetElementValue();
+	XMLFunctions drive = new XMLFunctions();
 	
 	private JButton btnSubmit2;
 	TextArea textOutput;
@@ -80,18 +77,18 @@ public class BasicApplication {
 					shortString = filePath.substring(0, 4);	
 					if(shortString.equals("http"))
 					{
-						getValue.fileCreation(filePath);
+						drive.fileCreation(filePath);
 						String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
 						filePath = filePath1;
 						input2 = textElement.getText();						
-						outcome = count.XMLCount(filePath ,input2)	;			
+						outcome = drive.XMLCount(filePath ,input2)	;			
 						textOutput.setText(outcome); 
 					}	
 					else
 					{
 				input1 = textURL.getText();
 				input2 = textElement.getText();
-				outcome = count.XMLCount(input1 ,input2);
+				outcome = drive.XMLCount(input1 ,input2);
 				textOutput.setText(outcome); 
 				}
 				}
@@ -151,18 +148,18 @@ public class BasicApplication {
 					shortString = filePath.substring(0, 4);	
 					if(shortString.equals("http"))
 					{
-						getValue.fileCreation(filePath);
+						drive.fileCreation(filePath);
 						String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
 						filePath = filePath1;
 						schema = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textElement.getText() + ".xsd";
-						outcome = xml.XMLValidationtest(filePath,schema);				
+						outcome = drive.XMLValidationtest(filePath,schema);				
 						textOutput.setText(outcome); 
 					}					
 					else
 					{
 				filePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
 				schema = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textElement.getText() + ".xsd";
-				outcome = xml.XMLValidationtest(filePath,schema);				
+				outcome = drive.XMLValidationtest(filePath,schema);				
 				textOutput.setText(outcome); 				
 				}
 					}}
@@ -198,21 +195,21 @@ public class BasicApplication {
 				}
 				else if(shortString.equals("http") && tagName != null && element != null)
 				{
-				getValue.fileCreation(filePath);
+					drive.fileCreation(filePath);
 				String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
-				outcome = getValue.elementValue(filePath1, tagName, element);
+				outcome = drive.elementValue(filePath1, tagName, element);
 				textOutput.setText(outcome); 
 				}
 				else if (shortString.equals("http") && tagName == null && element == null)
 				{
-				getValue.fileCreation(filePath);
+					drive.fileCreation(filePath);
 				outcome = "Response file has been created. \n C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
 				textOutput.setText(outcome);
 				}
 				else if (!shortString.equals("http") && tagName != null && element != null)
 				{
 					filePath = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\" + textURL.getText() + ".xml";
-					outcome = getValue.elementValue(filePath, tagName, element);				
+					outcome = drive.elementValue(filePath, tagName, element);				
 					textOutput.setText(outcome); 
 					
 				}				
