@@ -64,9 +64,7 @@ public class BasicApplication {
 		JButton btnSubmit1 = new JButton("Element Count");
 		btnSubmit1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {        //******************** Element Count
-				String input1;
-				String input2;
-				String outcome;
+				String input1, input2, outcome;
 				//xml.XMLValidationtest(Schema,File);
 				try{
 					String filePath = textURL.getText();
@@ -139,8 +137,7 @@ public class BasicApplication {
 		btnSubmit2.addActionListener(new ActionListener() {                //******************* Schema Validation
 			public void actionPerformed(ActionEvent e) {				
 				String filePath = textURL.getText();
-				String schema;
-				String outcome;
+				String schema, outcome;
 				try{			
 					String tagName = textElement.getText();
 					String element = textElement1.getText();
@@ -185,10 +182,7 @@ public class BasicApplication {
 		JButton btnGetElement = new JButton("Element Value");
 		btnGetElement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {						//************************** Get the element value
-				String filePath;
-				String tagName;
-				String element;
-				String outcome;
+				String filePath, tagName, element, outcome;
 				try{
 				filePath = textURL.getText();				
 				tagName = textElement.getText();
