@@ -207,7 +207,7 @@ public class BasicApplication {
 				getValue.fileCreation(filePath);
 				String filePath1 = "C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml";
 				outcome = getValue.elementValue(filePath1, tagName, element);
-				textOutput.setText(outcome); 
+				textOutput.setText("Response file created \n C:\\Users\\Kiran\\Desktop\\XML XSD Validation\\javaOutput.xml"); 
 				}
 				else if (shortString.equals("http") && tagName == null && element == null)
 				{
