@@ -36,6 +36,7 @@ public class resetSnapshotDB {
  
             rs = stmt.executeQuery(s);
             x= rs.getString(1);
+            rs.next();
             connection.close();			
 		} catch (Exception e) {
 			e.printStackTrace();
